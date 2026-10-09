@@ -1,0 +1,40 @@
+name: Build and Release App
+
+on:
+  push:
+    tags:
+      - 'v*' # 只有打 v* 标签时触发（例如 v1.0.0）
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build App
+        run: bash build.sh
+
+      - name: Package DMG
+        run: |
+          # 简单的 DMG 打包逻辑
+          npm install -g create-dmg
+          create-dmg \
+            --window-pos 200 120 \
+            --window-size 600 400 \
+            --volname "LivePhotoForge" \
+            --app-drop-link 400 150 \
+            --icon "LivePhotoForge.app" 150 150 \
+            "LivePhotoForge.dmg" \
+            "build/LivePhotoForge.app"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            LivePhotoForge.dmg
+            build/LivePhotoForge.app/Contents/MacOS/LivePhotoForge
+          generate_release_notes: true
