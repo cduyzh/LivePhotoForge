@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LivePhotoForge - 极速将视频转为苹果实况图 (Live Photo)</title>
+    <meta name="description" content="LivePhotoForge 是一款专为 Mac 用户打造的工具，用于将普通的 MP4/MOV 视频文件，无损、极速地转换为真正的苹果实况图 (Live Photo)，并全自动导入到您的 Mac 相册中，通过 iCloud 瞬间同步到 iPhone。">
+    <meta name="keywords" content="Live Photo, 实况图, 视频转实况图, 苹果相册, macOS工具, MP4转Live Photo, 小红书实况图, iPhone实况图">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">LivePhotoForge</h1>
+            <nav>
+                <a href="#features">功能特性</a>
+                <a href="#download">下载安装</a>
+                <a href="#cli">CLI 模式</a>
+                <a href="https://github.com/cduyzh/LivePhotoForge" target="_blank" class="github-link">GitHub</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>一键将视频变为真正的实况图</h2>
+            <p>基于苹果底层 AVFoundation 原生开发。彻底告别复杂的参数，只需一次拖拽，瞬间在相册里生成完美适配 iPhone 的 Live Photo。</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/cduyzh/LivePhotoForge/releases/latest/download/LivePhotoForge.dmg" class="btn btn-primary" id="download-dmg-btn">
+                    <span class="icon">🍎</span> 下载 macOS 客户端
+                    <small>v1.0.0 (支持 M 系列 & Intel)</small>
+                </a>
+                <a href="#cli" class="btn btn-secondary">终端极客？试试 CLI</a>
+            </div>
+            <div class="hero-image">
+                <!-- 占位图，后续可替换为真实的 App 截图 -->
+                <div class="app-mockup">
+                    <div class="window-bar">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    </div>
+                    <div class="window-content">
+                        <h3>📹 拖拽视频文件到这里</h3>
+                        <p>支持 MP4 / MOV / M4V / MKV</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">为什么选择 LivePhotoForge？</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">⚡️</div>
+                    <h3>极速无损</h3>
+                    <p>针对 H.264 视频采用 Passthrough 模式，流复制不重编码，10 秒视频处理仅需 0.04 秒。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔗</div>
+                    <h3>底层原生配对</h3>
+                    <p>利用系统 PHAssetCreationRequest API，在操作系统底层完美“熔合”图像与视频，100% 兼容 iPhone。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">☁️</div>
+                    <h3>无缝同步</h3>
+                    <p>不再需要隔空投送 (AirDrop)！处理后自动存入 Mac 图库，iCloud 会在几秒内将其同步到您的手机相册中。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💻</div>
+                    <h3>双模架构</h3>
+                    <p>同一个安装包，既是美观的图形界面应用，也是强大的命令行 (CLI) 工具，满足不同场景需求。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cli" class="cli-section">
+        <div class="container">
+            <h2 class="section-title">专为极客打造的 CLI</h2>
+            <p>通过一行命令即可安装 CLI 版本，完美融入您的自动化工作流脚本中。</p>
+            
+            <div class="code-block">
+                <div class="code-header">终端 (Terminal)</div>
+                <pre><code id="install-cmd">sudo curl -L "https://github.com/cduyzh/LivePhotoForge/releases/latest/download/LivePhotoForge" -o /usr/local/bin/livephoto && sudo chmod +x /usr/local/bin/livephoto</code></pre>
+                <button class="copy-btn" onclick="copyCode()">复制命令</button>
+            </div>
+
+            <div class="cli-usage">
+                <h3>常见用法</h3>
+                <ul>
+                    <li><code>livephoto video.mp4</code> - 自动转换并直接导入相册</li>
+                    <li><code>livephoto --frame-time 2.5 video.mp4</code> - 截取视频第 2.5 秒作为封面</li>
+                    <li><code>livephoto -o ~/Desktop/LivePhotos/ video.mp4</code> - 仅输出到指定目录，不导入图库</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LivePhotoForge. 基于 MIT 协议开源。</p>
+            <p>Developed with ❤️ using Swift and SwiftUI.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
